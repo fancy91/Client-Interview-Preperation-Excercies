@@ -17,6 +17,7 @@
         function setOutput() {
             var inputString = document.getElementById("str").value.toLowerCase();
             if(inputString){
+                //to get duplicate characters
                 var inputArray = inputString.split(" ").join("").split("");
                 var resultArray = [];
                 var nonDuplicateArray = [];
@@ -27,7 +28,7 @@ resultArray.push(inputArray[i]);
 
                     }
                 }
-                
+                //to get first non-duplicate character
                 for(var i=0;i<inputArray.length;i++){
                     if(inputArray.indexOf(inputArray[i]) == i && inputArray.indexOf(inputArray[i],i+2) == -1){
                         
