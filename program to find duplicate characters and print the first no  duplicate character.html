@@ -30,7 +30,7 @@ resultArray.push(inputArray[i]);
                 }
                 //to get first non-duplicate character
                 for(var i=0;i<inputArray.length;i++){
-                    if(inputArray.indexOf(inputArray[i]) == i && inputArray.indexOf(inputArray[i],i+2) == -1){
+                    if(inputArray.indexOf(inputArray[i]) == i && inputArray.indexOf(inputArray[i],i+1) == -1){
                         
 nonDuplicateArray.push(inputArray[i]);
                     }
