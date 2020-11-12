@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>String Excercises</title>
+    <label>Enter String:</label>
+<input type="text" id="str" value="">
+<button onclick="setOutput()">Result</button>
+<button onclick="clearOutput()">Clear</button>
+<div>
+<div id="output"> </div>
+<div id="output2"> </div>
+</div>
+    <script>
+        function setOutput() {
+            var inputString = document.getElementById("str").value.toLowerCase();
+            if(inputString){
+                var inputArray = inputString.split(" ").join("").split("");
+                var resultArray = [];
+                var nonDuplicateArray = [];
+                for(var i=0;i<inputArray.length;i++){
+                    if(inputArray.lastIndexOf(inputArray[i]) != i){
+                        if (!resultArray.includes(inputArray[i]))
+resultArray.push(inputArray[i]);
+
+                    }
+                }
+                
+                for(var i=0;i<inputArray.length;i++){
+                    if(inputArray.indexOf(inputArray[i]) == i && inputArray.indexOf(inputArray[i],i+2) == -1){
+                        
+nonDuplicateArray.push(inputArray[i]);
+                    }
+                }
+            }
+        document.getElementById("output").innerHTML = "Duplicate Characters: "+resultArray;
+        if(nonDuplicateArray.length > 0)
+        document.getElementById("output2").innerHTML = "Duplicate first Character is: "+ nonDuplicateArray[0];
+        else
+        document.getElementById("output2").innerHTML = "Every characters are repeating in  the given string";
+}
+function clearOutput(){
+    document.getElementById("str").value = "";
+    document.getElementById("output").innerHTML = "";
+    document.getElementById("output2").innerHTML = "";
+}
+    </script>
+</head>
+
+<body>
+
+</body>
+
+
+
+</html>
