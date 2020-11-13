@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>String Excercises</title>
+    <label>Enter String:</label>
+<input type="text" id="str" value="">
+<button onclick="setOutput()">Result</button>
+<button onclick="clearOutput()">Clear</button>
+<div>
+<div id="output"> </div>
+</div>
+    <script>
+        function setOutput() {
+            var inputString = document.getElementById("str").value;
+           //To get reverse of a sentence
+         var output = inputString.split(" ").reverse().join(" ");
+        document.getElementById("output").innerHTML = "Resversed Sentence: "+output;
+     
+}
+function clearOutput(){
+    document.getElementById("str").value = "";
+    document.getElementById("output").innerHTML = "";
+    
+}
+    </script>
+</head>
+
+<body>
+
+</body>
+
+
+
+</html>

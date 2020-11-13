@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>String Excercises</title>
+    <label>Enter String:</label>
+<input type="text" id="str" value="">
+<button onclick="setOutput()">Result</button>
+<button onclick="clearOutput()">Clear</button>
+<div>
+<div id="output"> </div>
+</div>
+    <script>
+        function setOutput() {
+            var inputString = document.getElementById("str").value.toLowerCase();
+           //To get reverse of string
+           var output = '';
+         for (let value of inputString) {
+  output = value + output;
+}
+        document.getElementById("output").innerHTML = "Reversed Sentence: "+output;
+     
+}
+function clearOutput(){
+    document.getElementById("str").value = "";
+    document.getElementById("output").innerHTML = "";
+    
+}
+    </script>
+</head>
+
+<body>
+
+</body>
+
+
+
+</html>
