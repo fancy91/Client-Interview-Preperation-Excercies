@@ -18,21 +18,20 @@
             var inputString = document.getElementById("str").value.toLowerCase();
             if(inputString){
                 //to get duplicate characters
-                var inputArray = inputString.split(" ").join("").split("");
                 var resultArray = [];
                 var nonDuplicateArray = [];
-                for(var i=0;i<inputArray.length;i++){
-                    if(inputArray.lastIndexOf(inputArray[i]) != i){
-                        if (!resultArray.includes(inputArray[i]))
-resultArray.push(inputArray[i]);
+                for(var i=0;i<inputString.length;i++){
+                    if(inputString[i] != ' ' && inputString.lastIndexOf(inputString[i]) != i){
+                        if (!resultArray.includes(inputString[i]))
+resultArray.push(inputString[i]);
 
                     }
                 }
                 //to get first non-duplicate character
-                for(var i=0;i<inputArray.length;i++){
-                    if(inputArray.indexOf(inputArray[i]) == i && inputArray.indexOf(inputArray[i],i+1) == -1){
+                for(var i=0;i<inputString.length;i++){
+                    if(inputString.indexOf(inputString[i]) == i && inputString.indexOf(inputString[i],i+1) == -1){
                         
-nonDuplicateArray.push(inputArray[i]);
+nonDuplicateArray.push(inputString[i]);
                     }
                 }
             }
