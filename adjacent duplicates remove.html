@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>String Excercises</title>
+    <label>Enter String:</label>
+<input type="text" id="str" value="">
+<button onclick="setOutput()">Result</button>
+<button onclick="clearOutput()">Clear</button>
+<div>
+<div id="output"> </div>
+</div>
+    <script>
+        function setOutput() {
+            var inputString = document.getElementById("str").value;
+           //To remove adjacent duplicates
+        var stack = [];
+        for (let i = 0; i < inputString.length; i++) {
+          if(inputString[i] == stack[stack.length -1]){
+              stack.pop();
+          } else{
+              stack.push(inputString[i]);
+          } 
+            
+        }
+        document.getElementById("output").innerHTML = "Result: "+stack.join("");
+     
+}
+function clearOutput(){
+    document.getElementById("str").value = "";
+    document.getElementById("output").innerHTML = "";
+    
+}
+    </script>
+</head>
+
+<body>
+
+</body>
+
+
+
+</html>
