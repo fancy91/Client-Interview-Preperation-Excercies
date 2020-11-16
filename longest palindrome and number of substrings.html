@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>String Excercises</title>
+    <label>Enter String:</label>
+<input type="text" id="str" value="">
+<button onclick="longestPalindrome()">Result</button>
+<button onclick="clearOutput()">Clear</button>
+<div>
+<div id="output"> </div>
+<div id="output1"> </div>
+</div>
+    <script>
+    function isPalindrome(str){
+        var reverseString = str.split("").reverse().join("");
+return reverseString == str;
+    }
+        function longestPalindrome() {
+            var inputString = document.getElementById("str").value.toLowerCase();
+            var numberofSubstrings = 0;
+           //To get longest palindrome
+           var maxLength = 0;
+           var maxP;
+           for(var i=0;i<inputString.length;i++){
+               var subs = inputString.substr(i,inputString.length);
+               for(var j = subs.length;j>=0;j--){
+                   var subs_sub = subs.substr(0,j);
+                   if(subs_sub.length <= 1)
+                   continue;
+                   if(isPalindrome(subs_sub)){
+                       numberofSubstrings++;
+                       console.log(subs_sub);
+                       if(subs_sub.length > maxLength){
+                           maxLength = subs_sub.length;
+                           maxP = subs_sub;
+                       }
+                   }
+               }
+           }
+      
+        document.getElementById("output").innerHTML = "Reversed Sentence: "+maxP;
+        document.getElementById("output1").innerHTML = "No of palidrome in the string is "+ numberofSubstrings;
+     
+}
+function clearOutput(){
+    document.getElementById("str").value = "";
+    document.getElementById("output").innerHTML = "";
+    document.getElementById("output1").innerHTML = "";
+    
+}
+    </script>
+</head>
+
+<body>
+
+</body>
+
+
+
+</html>
