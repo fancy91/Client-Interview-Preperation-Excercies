@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Merge Integer Array</title>
+    <label>Enter first array:</label>
+<input type="text" id="str" value="">
+<label>Enter second array:</label>
+<input type="text" id="second" value="">
+<button onclick="setOutput()">Result</button>
+<button onclick="clearOutput()">Clear</button>
+<div>
+<div id="output"> </div>
+</div>
+    <script>
+        function setOutput() {
+            var firstArray = JSON.parse(document.getElementById("str").value);
+            var secondArray = JSON.parse(document.getElementById("second").value);
+            var combinedArray = firstArray.concat(secondArray);
+            combinedArray = combinedArray.filter(function(val) {
+    return val !== 0;
+});
+            document.getElementById("output").innerHTML = combinedArray.sort(function(a, b){return a-b});
+          
+}
+function clearOutput(){
+    document.getElementById("str").value = "";
+    document.getElementById("output").innerHTML = "";
+    
+}
+    </script>
+</head>
+
+<body>
+
+</body>
+
+
+
+</html>

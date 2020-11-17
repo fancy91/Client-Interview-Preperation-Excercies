@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Matrix Sort</title>
+    <label>Enter m*n Matrix:</label>
+<input type="text" id="str" value="">
+<button onclick="setOutput()">Result</button>
+<button onclick="clearOutput()">Clear</button>
+<div>
+<div id="output"> </div>
+</div>
+    <script>
+        function setOutput() {
+            var inputString = document.getElementById("str").value;
+            var matrix = JSON.parse(inputString);
+          var m = matrix.length;
+          var n = matrix[0].length;
+          var tempMap = [];
+          for(var i=0;i<m;i++){
+              for(var j=0;j<n;j++){
+                  var diff = i-j;
+                  if(tempMap[diff] == undefined){
+                  tempMap[diff]= [];
+                  tempMap[diff].push(matrix[i][j]);
+                  }else{
+                  tempMap[diff].push(matrix[i][j]);
+                  }
+
+              }
+          }
+          Object.keys(tempMap).forEach(function(key) {
+    tempMap[key] = tempMap[key].sort();
+});
+ for(var k=0;k<m;k++){
+              for(var l=0;l<n;l++){
+                  var diff = k-l;
+                  matrix[k][l]=tempMap[diff][0];
+                  tempMap[diff].splice(0,1);
+              }}
+
+        if(matrix)
+        {
+            var output = 'Diagonaly Sorted Matrix: <br>';
+         for(var k=0;k<m;k++){
+             
+             output += matrix[k] + '<br>';
+              }
+                      document.getElementById("output").innerHTML = output;
+
+        }
+        else
+        document.getElementById("output").innerHTML = "Not valid input";
+     
+}
+function clearOutput(){
+    document.getElementById("str").value = "";
+    document.getElementById("output").innerHTML = "";
+    
+}
+    </script>
+</head>
+
+<body>
+
+</body>
+
+
+
+</html>
