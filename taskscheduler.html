@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Task Scheduler</title>
+    <label>Enter Tasks as Array:</label>
+<input type="text" id="tasks" value="">
+ <label>Enter n:</label>
+<input type="text" id="num" value="">
+<button onclick="setOutput()">Result</button>
+<button onclick="clearOutput()">Clear</button>
+<div>
+<div id="output"> </div>
+</div>
+    <script>
+    
+        function setOutput() {
+            var tasks = JSON.parse(document.getElementById("tasks").value);
+            var n = parseInt(document.getElementById("num").value);
+          var count = {}
+    var longest  = 0
+    
+    // count each task and find longest one
+    for (let c of tasks) {
+        if (count[c] == null) count[c] = 0
+        count[c]++
+        longest = Math.max(longest, count[c])
+    }
+
+    var longestCount = 0
+    // count how many tasks which have longest.
+    for (let c in count){
+        if (count[c] == longest) longestCount++
+    }
+
+    var result =  Math.max((n + 1) * (longest - 1) + longestCount, tasks.length)
+        if(result)
+        document.getElementById("output").innerHTML = "Least unit of time CPU takes: "+result;
+        else
+        document.getElementById("output").innerHTML = "Not valid input";
+     
+}
+function clearOutput(){
+    document.getElementById("str").value = "";
+    document.getElementById("output").innerHTML = "";
+    
+}
+    </script>
+</head>
+
+<body>
+
+</body>
+
+
+
+</html>

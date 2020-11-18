@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Task Scheduler</title>
+    <div>
+    <label>Recounter/Ping:</label>
+    ["RecentCounter", "ping", "ping", "ping", "ping"]
+    </div>
+    <div>
+    
+ <label>Ping array:</label>
+ [[], [1], [100], [3001], [3200]]
+ </div>
+
+<button onclick="setOutput()">Result</button>
+<button onclick="clearOutput()">Clear</button>
+<div>
+<div id="output"> </div>
+</div>
+    <script>
+    
+        function setOutput() {
+            var functions = ["RecentCounter", "ping", "ping", "ping", "ping"];
+            var pings = [[], [1], [100], [3001], [3200]];
+            var pingArray = [];
+            var outputArray = [];
+            var minRange = [];
+            var maxRange = [];
+            for(var i=0;i<functions.length;i++){
+                if(functions[i] == 'RecentCounter' && pings[i].length == 0){
+                    outputArray.push(null);
+                }else{
+                  //t
+                  
+                  pingArray.push(pings[i][0]);
+                   minRange.push(pings[i][0] -3000);
+                  maxRange.push(pings[i][0]);
+                 
+                  
+                }
+            }
+            
+                                 
+                  for(var i=0;i<pingArray.length;i++){
+                          var satisfiedPings = pingArray.filter(x => (x >= minRange[i] && x <=  maxRange[i]));
+                          outputArray.push(satisfiedPings.length);
+                  };
+         
+
+        if(outputArray)
+        document.getElementById("output").innerHTML = "Least unit of time CPU takes: "+JSON.stringify(outputArray);
+        else
+        document.getElementById("output").innerHTML = "Not valid input";
+     
+}
+function clearOutput(){
+    document.getElementById("str").value = "";
+    document.getElementById("output").innerHTML = "";
+    
+}
+    </script>
+</head>
+
+<body>
+
+</body>
+
+
+
+</html>
