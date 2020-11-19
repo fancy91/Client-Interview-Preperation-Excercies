@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Stack Excercises</title>
+    <label>Enter String:</label>
+<input type="text" id="str" value="">
+<button onclick="setOutput()">Result</button>
+<button onclick="clearOutput()">Clear</button>
+<div>
+<div id="output"> </div>
+</div>
+    <script>
+        function setOutput() {
+            var stack = document.getElementById("str").value.split("");
+            var tempArray = [];
+            var resultArray = [];
+           //To remove outer Para
+        
+        for(var i=0;i<stack.length;i++){
+            if(stack[i] == '('){
+                tempArray.push(stack[i])
+                if(tempArray.length != 1){
+                resultArray.push(stack[i]);
+                }
+            }
+            else if(stack[i] == ')'){
+                if(tempArray.length != 1){
+                    resultArray.push(stack[i]);
+                }
+                tempArray.pop();
+            }
+            else{
+                resultArray.push(stack[i])
+            }
+        }
+        document.getElementById("output").innerHTML = "Result: "+resultArray.join("");
+     
+}
+function clearOutput(){
+    document.getElementById("str").value = "";
+    document.getElementById("output").innerHTML = "";
+    
+}
+    </script>
+</head>
+
+<body>
+
+</body>
+
+
+
+</html>
