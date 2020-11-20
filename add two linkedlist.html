@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Linked List</title>
+    <label>Enter first List:</label>
+<input type="text" id="list1" value="">
+<label>Enter second list:</label>
+<input type="text" id="list2" value="">
+<button onclick="setOutput()">Result</button>
+<button onclick="clearOutput()">Clear</button>
+<div>
+<div id="output"> </div>
+</div>
+    <script>
+    class ListNode{
+        constructor(data){
+            this.data = data;
+            this.next = null;
+
+        }
+
+    }
+          function L(val){
+    this.val = val;
+    this.next = null;
+}
+
+
+function createL(a){
+    let node, temp;
+    for(let i=a.length-1; i >= 0; i--){
+        if(!node)
+            node = new L(a[i]);
+        else {
+            temp = new L(a[i]);
+            temp.next = node;
+            node = temp;
+        }
+    }
+    return node;
+}
+
+
+function doSum(l1, l2, carried) {
+    if (!l1 && !l2) {
+        return carried > 0 ? new ListNode(carried) : null;
+    }
+
+    const sum = carried + (l1 ? l1.val : 0) + (l2 ? l2.val : 0);
+    const curry = Math.floor(sum / 10);
+    const res = new ListNode(sum % 10);
+    
+    res.next = doSum(l1 ? l1.next : null, l2 ? l2.next : null, curry);
+    
+    return res;
+}
+        function setOutput() {
+            var l1 = createL(JSON.parse(document.getElementById("list1").value));
+            var l2 = createL(JSON.parse(document.getElementById("list2").value));
+            var output = doSum(l1, l2, 0);
+            var outputArray = [];
+             while (output) {
+                outputArray.push(output.data);
+                output = (output) ? output.next : null;
+            }
+        document.getElementById("output").innerHTML = JSON.stringify(outputArray);
+
+            }
+            
+          
+
+function clearOutput(){
+    document.getElementById("list1").value = "";
+    document.getElementById("list2").value = "";
+    document.getElementById("output").innerHTML = "";
+    
+}
+    </script>
+</head>
+
+<body>
+
+</body>
+
+
+
+</html>

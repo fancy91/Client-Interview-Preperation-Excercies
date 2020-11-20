@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Linked List</title>
+    <label>Enter List:</label>
+<input type="text" id="list1" value="">
+
+<button onclick="setOutput()">Result</button>
+<button onclick="clearOutput()">Clear</button>
+<div>
+<div id="output"> </div>
+</div>
+    <script>
+    class ListNode{
+        constructor(data){
+            this.data = data;
+            this.next = null;
+
+        }
+
+    }
+          function L(val){
+    this.val = val;
+    this.next = null;
+}
+
+
+function createL(a){
+    let node, temp;
+    for(let i=a.length-1; i >= 0; i--){
+        if(!node)
+            node = new L(a[i]);
+        else {
+            temp = new L(a[i]);
+            temp.next = node;
+            node = temp;
+        }
+    }
+    return node;
+}
+
+function reverse(head) {
+  let node = head,
+      previous,
+      tmp;
+
+  while (node) {
+    // save next before we overwrite node.next!
+    tmp = node.next;
+
+    // reverse pointer
+    node.next = previous;
+
+    // step forward in the list
+    previous = node;
+    node = tmp;
+  }
+
+  return previous;
+}
+
+        function setOutput() {
+            var l1 = createL(JSON.parse(document.getElementById("list1").value));
+            var output = reverse(l1);
+            var outputArray = [];
+             while (output) {
+                outputArray.push(output.val);
+                output = (output) ? output.next : null;
+            }
+        document.getElementById("output").innerHTML = JSON.stringify(outputArray);
+
+            }
+            
+          
+
+function clearOutput(){
+    document.getElementById("list1").value = "";
+    document.getElementById("list2").value = "";
+    document.getElementById("output").innerHTML = "";
+    
+}
+    </script>
+</head>
+
+<body>
+
+</body>
+
+
+
+</html>
