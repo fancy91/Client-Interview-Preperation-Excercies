@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Binary Search</title>
+    <label>Enter Sorted Array:</label>
+<input type="text" id="arr" value="">
+<label>Enter target:</label>
+<input type="text" id="target" value="">
+<button onclick="setOutput()">Result</button>
+<button onclick="clearOutput()">Clear</button>
+<div>
+<div id="output"> </div>
+</div>
+    <script>
+    var search = function(nums, target) {
+	let start = 0
+	let end = nums.length - 1
+	
+	while(start <= end) {
+		let middle = Math.floor((start + end) / 2)
+		let potentialMatch = nums[middle]
+		
+		if(target == potentialMatch) {
+			return middle
+		} else if(target < potentialMatch) {
+			end = middle - 1
+		} else {
+			start = middle + 1
+		}
+	}
+	
+	return -1
+};
+        function setOutput() {
+            var inputArray = JSON.parse(document.getElementById("arr").value);
+            
+            var target = document.getElementById("target").value;
+            var index = search(inputArray,target);
+         
+        if(index >=0)
+        document.getElementById("output").innerHTML = "Index: "+index;
+        else
+        document.getElementById("output").innerHTML = "Not Found";
+     
+}
+function clearOutput(){
+    document.getElementById("arr").value = "";
+    document.getElementById("target").value = "";
+    document.getElementById("output").innerHTML = "";
+    
+}
+    </script>
+</head>
+
+<body>
+
+</body>
+
+
+
+</html>

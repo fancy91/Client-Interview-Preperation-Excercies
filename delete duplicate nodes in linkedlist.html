@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Binary Search</title>
+    <label>Enter List:</label>
+<input type="text" id="list1" value="">
+<button onclick="setOutput()">Result</button>
+<button onclick="clearOutput()">Clear</button>
+<div>
+<div id="output"> </div>
+</div>
+    <script>
+   var deleteDuplicates = function(head) {
+    let newHead = new L(null);
+    let cur = newHead, duplicate = 0;
+    while (head !== null) {
+        if (head.next && head.val == head.next.val) {
+            duplicate++;
+        } else {
+            if (duplicate == 0) {
+                cur.next = head;
+                cur = cur.next;
+            }
+            duplicate = 0;
+        }
+        head = head.next;
+    }
+    cur.next = null;
+    return newHead.next;
+   
+};
+ function L(val){
+    this.val = val;
+    this.next = null;
+}
+
+
+function createL(a){
+    let node, temp;
+    for(let i=a.length-1; i >= 0; i--){
+        if(!node)
+            node = new L(a[i]);
+        else {
+            temp = new L(a[i]);
+            temp.next = node;
+            node = temp;
+        }
+    }
+    return node;
+}
+        function setOutput() {
+            var inputList1 = createL(JSON.parse(document.getElementById("list1").value));
+            
+            var mergedList = deleteDuplicates(inputList1);
+         var outputArray = [];
+             while (mergedList) {
+                outputArray.push(mergedList.val);
+                mergedList = (mergedList) ? mergedList.next : null;
+            }
+        document.getElementById("output").innerHTML = JSON.stringify(outputArray);
+        
+     
+}
+function clearOutput(){
+    document.getElementById("list1").value = "";
+    document.getElementById("output").innerHTML = "";
+    
+}
+    </script>
+</head>
+
+<body>
+
+</body>
+
+
+
+</html>

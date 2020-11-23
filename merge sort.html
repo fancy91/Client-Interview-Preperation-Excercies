@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Merge Sort</title>
+    <label>Enter List one:</label>
+<input type="text" id="list1" value="">
+<label>Enter List two:</label>
+<input type="text" id="list2" value="">
+<button onclick="setOutput()">Result</button>
+<button onclick="clearOutput()">Clear</button>
+<div>
+<div id="output"> </div>
+</div>
+    <script>
+    var mergeTwoLists = function(l1, l2) {
+    var mergedHead = { val : -1, next : null },
+        crt = mergedHead;
+    while(l1 && l2) {
+        if(l1.val > l2.val) {
+            crt.next = l2;
+            l2 = l2.next;
+        } else {
+            crt.next = l1;
+            l1 = l1.next;
+        }
+        crt = crt.next;
+    }
+    crt.next = l1 || l2;
+    
+    return mergedHead.next;
+};
+ function L(val){
+    this.val = val;
+    this.next = null;
+}
+
+
+function createL(a){
+    let node, temp;
+    for(let i=a.length-1; i >= 0; i--){
+        if(!node)
+            node = new L(a[i]);
+        else {
+            temp = new L(a[i]);
+            temp.next = node;
+            node = temp;
+        }
+    }
+    return node;
+}
+        function setOutput() {
+            var inputList1 = createL(JSON.parse(document.getElementById("list1").value));
+            var inputList2 = createL(JSON.parse(document.getElementById("list2").value));
+            
+            var mergedList = mergeTwoLists(inputList1,inputList2);
+         var outputArray = [];
+             while (mergedList) {
+                outputArray.push(mergedList.val);
+                mergedList = (mergedList) ? mergedList.next : null;
+            }
+        document.getElementById("output").innerHTML = JSON.stringify(outputArray);
+        
+     
+}
+function clearOutput(){
+    document.getElementById("list1").value = "";
+    document.getElementById("list2").value = "";
+    document.getElementById("output").innerHTML = "";
+    
+}
+    </script>
+</head>
+
+<body>
+
+</body>
+
+
+
+</html>

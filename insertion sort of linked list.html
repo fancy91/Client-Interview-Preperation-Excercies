@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Insertion Sort</title>
+    <label>Enter List:</label>
+<input type="text" id="list1" value="">
+<button onclick="setOutput()">Result</button>
+<button onclick="clearOutput()">Clear</button>
+<div>
+<div id="output"> </div>
+</div>
+    <script>
+  var insertionSortList = function(head) {
+    if (!head) return null;
+    let sorted = head;
+    head = head.next;
+    sorted.next = null;
+    while (head) {
+        let prev = null;
+        let node = sorted;
+        while (node && head.val > node.val) {
+            prev = node;
+            node = node.next;
+        }
+        let insert = head;
+        head = head.next;
+        insert.next = node;
+        if (prev) {
+            prev.next = insert;
+        } else {
+            sorted = insert;
+        }
+    }
+    return sorted;
+};
+ function L(val){
+    this.val = val;
+    this.next = null;
+}
+
+
+function createL(a){
+    let node, temp;
+    for(let i=a.length-1; i >= 0; i--){
+        if(!node)
+            node = new L(a[i]);
+        else {
+            temp = new L(a[i]);
+            temp.next = node;
+            node = temp;
+        }
+    }
+    return node;
+}
+        function setOutput() {
+            var inputList1 = createL(JSON.parse(document.getElementById("list1").value));
+            
+            var sortedList = insertionSortList(inputList1);
+         var outputArray = [];
+             while (sortedList) {
+                outputArray.push(sortedList.val);
+                sortedList = (sortedList) ? sortedList.next : null;
+            }
+        document.getElementById("output").innerHTML = JSON.stringify(outputArray);
+        
+     
+}
+function clearOutput(){
+    document.getElementById("list1").value = "";
+    document.getElementById("output").innerHTML = "";
+    
+}
+    </script>
+</head>
+
+<body>
+
+</body>
+
+
+
+</html>
