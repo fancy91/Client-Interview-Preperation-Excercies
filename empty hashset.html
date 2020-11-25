@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html lang="en-US">
+<script type="text/javascript" src="hashtable.js"></script>
+<script type="text/javascript" src="hashset.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<button onclick="setOutput()">Clear</button>
+<div>
+<div id="output"> </div>
+</div>
+    <script>
+
+
+        function setOutput() {
+        
+      
+            var dinosaurs = new HashSet();
+
+    dinosaurs.add("Triceratops");
+    dinosaurs.add("Diplodocus");
+    dinosaurs.add("Stegosaurus");
+
+dinosaurs.clear();
+alert("Hashset cleared");        
+     const set = new Set(['welcome', 'to', 'GFG']); 
+  
+            console.log(Array.from(set)); 
+            var hs = new HashSet();
+        //add elements to HashSet
+        hs.add("first");
+        hs.add("second");
+        hs.add("third");
+        hs.add("apple");
+        hs.add("rat");
+        console.log(hs);
+        var subSet = new HashSet();
+        subSet.add("rat");
+        subSet.add("second");
+        subSet.add("first");
+        var resultSet = new HashSet();
+        for(var i=0;i<hs.values().length;i++){
+            if(subSet.contains(hs.values()[i])){
+                resultSet.add(hs.values()[i]);
+            }
+        }
+        console.log("HashSet content:");
+        console.log(resultSet.values());
+}
+function clearOutput(){
+    document.getElementById("list1").value = "";
+    document.getElementById("output").innerHTML = "";
+    
+}
+    </script>
+</head>
+
+<body>
+
+</body>
+
+
+
+</html>
